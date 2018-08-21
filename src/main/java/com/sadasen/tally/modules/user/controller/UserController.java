@@ -16,6 +16,7 @@ import com.sadasen.tally.base.BaseController;
 import com.sadasen.tally.modules.user.dto.UserDto;
 import com.sadasen.tally.modules.user.entity.User;
 import com.sadasen.tally.modules.user.service.UserService;
+import com.sadasen.tally.util.Utils;
 import com.sadasen.util.DateUtil;
 
 import ch.qos.logback.classic.Logger;
@@ -55,12 +56,12 @@ public class UserController extends BaseController {
 		User user = new User();
 		user.setUserName(userDto.getUserName());
 		user.setNickName(userDto.getUserName());
-		user.setPassword(userDto.getPassword());
+		user.setPassword(Utils.toPassword(userDto));
 		user.setCreateTime(DateUtil.now());
 		// 新增用户
 		try {
-			user = userService.save(user);
-			LOG.info("用户 {} 注册成功！");
+			user = userService.saveUserAndInfo(user);
+			LOG.info("用户 {} 注册成功！", user.getUserName());
 			return JsonResult.instance("注册成功", user);
 		} catch (Exception e) {
 			LOG.error("用户注册，系统异常");
@@ -91,8 +92,12 @@ public class UserController extends BaseController {
 		if(null == exists) {
 			return JsonResult.instance(Status.REQUEST_VALID, "用户未注册！");
 		}
-		if(exists.getPassword().equals(userDto.getPassword())) {
+		
+		if(exists.getPassword().equals(Utils.toPassword(userDto))) {
 			LOG.info("用户 uname : {} 登录", userDto.getUserName());
+			exists.setLastLoginTime(exists.getLoginTime());
+			exists.setLoginTime(DateUtil.now());
+			userService.modifyLoginInfo(exists);
 			super.getRequest().getSession().setAttribute(GlobalConsts.LOGIN_USER, exists);
 			return JsonResult.instance("登录成功", exists);
 		} else {
@@ -105,7 +110,7 @@ public class UserController extends BaseController {
 	 * @param userName	用户名
 	 * @return	Json
 	 */
-	@GetMapping("/valid/{userName}")
+	@GetMapping("/exists/{userName}")
 	public JsonResult validUserName(@PathVariable("userName") String userName) {
 		LOG.debug("验证用户名 {} 是否已存在", userName);
 		User exists = null;
@@ -119,7 +124,7 @@ public class UserController extends BaseController {
 		if(null == exists) {
 			return JsonResult.instance("用户名未被注册", false);
 		}
-		return JsonResult.instance("用户名已被注册！", true);
+		return JsonResult.instance("用户名已被注册", true);
 	}
 	
 	/**

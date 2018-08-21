@@ -29,16 +29,8 @@ public class User extends BaseEntity {
 	private String password;
 	// 昵称
 	private String nickName;
-	// 真实名字
-	private String realName;
-	// 身份证号
-	private String idCard;
 	// 签名
 	private String sign;
-	// 邮箱
-	private String email;
-	// 手机号
-	private long phoneNum;
 	// 头像
 	private String profilePhoto;
 	// 登录时间
@@ -83,44 +75,12 @@ public class User extends BaseEntity {
 		this.nickName = nickName;
 	}
 
-	public String getRealName() {
-		return realName;
-	}
-
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
-
-	public String getIdCard() {
-		return idCard;
-	}
-
-	public void setIdCard(String idCard) {
-		this.idCard = idCard;
-	}
-
 	public String getSign() {
 		return sign;
 	}
 
 	public void setSign(String sign) {
 		this.sign = sign;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public long getPhoneNum() {
-		return phoneNum;
-	}
-
-	public void setPhoneNum(long phoneNum) {
-		this.phoneNum = phoneNum;
 	}
 
 	public String getProfilePhoto() {
