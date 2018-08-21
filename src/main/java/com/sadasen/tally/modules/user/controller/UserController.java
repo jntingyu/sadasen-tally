@@ -133,6 +133,10 @@ public class UserController extends BaseController {
 	 */
 	@GetMapping("/logout")
 	public JsonResult logout() {
+		User loginUser = (User) super.getRequest().getSession().getAttribute(GlobalConsts.LOGIN_USER);
+		if(null != loginUser) {
+			LOG.info("用户 {} 注销登录", loginUser.getUserName());
+		}
 		super.getRequest().getSession().removeAttribute(GlobalConsts.LOGIN_USER);
 		return JsonResult.instance("注销成功");
 	}
