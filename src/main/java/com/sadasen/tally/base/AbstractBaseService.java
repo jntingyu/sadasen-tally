@@ -1,5 +1,8 @@
 package com.sadasen.tally.base;
 
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+
 import org.beetl.sql.core.SQLManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +27,18 @@ public abstract class AbstractBaseService<T> implements BaseService<T> {
 	public T save(T t, boolean flag) {
 		sqlManager.insertTemplate(t, flag);
 		return t;
+	}
+	
+	@Override
+	public T findById(Serializable id) {
+		T t = sqlManager.single(getTClass(), id);
+		return t;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private Class<T> getTClass() {
+		Class<T> tClass = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		return tClass;
 	}
 
 }
