@@ -19,6 +19,8 @@ public class Consts {
 		public static final String T_CLASSIFY_PERSONAL_PARENT = "t_classify_personal_parent";
 		// 个人账单帐户
 		public static final String T_ACCOUNT_PERSONAL = "t_account_personal";
+		// 个人账单帐户组
+		public static final String T_ACCOUNT_GROUP_PERSONAL = "t_account_group_personal";
 		
 	}
 	
