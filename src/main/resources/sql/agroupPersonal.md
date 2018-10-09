@@ -9,6 +9,7 @@ selectListByBill
 	select * from #use("agroupPersonalTableName")#
 	where
 	bill_id = #billId#
+	order by sort
 	
 selectMaxSortByCondition
 ===

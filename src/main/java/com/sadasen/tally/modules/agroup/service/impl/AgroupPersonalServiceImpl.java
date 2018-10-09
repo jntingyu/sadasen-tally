@@ -1,5 +1,7 @@
 package com.sadasen.tally.modules.agroup.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class AgroupPersonalServiceImpl extends AbstractBaseService<AgroupPersona
 	
 	@Autowired
 	private AgroupPersonalDao agroupPersonalDao;
+	
+	@Override
+	public List<AgroupPersonal> getByBillId(long billId) {
+		return agroupPersonalDao.selectListByBill(billId);
+	}
 	
 	public int getMaxSortByBill(long billId) {
 		return agroupPersonalDao.selectMaxSortByCondition(billId);
