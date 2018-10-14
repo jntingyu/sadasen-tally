@@ -2,7 +2,7 @@ package com.sadasen.tally.modules.classify.dao;
 
 import org.beetl.sql.core.mapper.BaseMapper;
 
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonalParent;
+import com.sadasen.tally.modules.classify.entity.PersonalClassifyParent;
 
 /**
  * @date 2018年9月16日
@@ -10,6 +10,6 @@ import com.sadasen.tally.modules.classify.entity.ClassifyPersonalParent;
  * @addr home
  * @desc
  */
-public interface ClassifyPersonalParentDao extends BaseMapper<ClassifyPersonalParent> {
+public interface PersonalClassifyParentDao extends BaseMapper<PersonalClassifyParent> {
 
 }

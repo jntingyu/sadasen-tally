@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sadasen.tally.base.AbstractBaseService;
-import com.sadasen.tally.modules.classify.dao.ClassifyPersonalDao;
-import com.sadasen.tally.modules.classify.dao.ClassifyPersonalParentDao;
+import com.sadasen.tally.modules.classify.dao.PersonalClassifyDao;
+import com.sadasen.tally.modules.classify.dao.PersonalClassifyParentDao;
 import com.sadasen.tally.modules.classify.dto.ClassifyParamDto;
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonal;
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonalParent;
-import com.sadasen.tally.modules.classify.service.ClassifyPersonalService;
+import com.sadasen.tally.modules.classify.entity.PersonalClassify;
+import com.sadasen.tally.modules.classify.entity.PersonalClassifyParent;
+import com.sadasen.tally.modules.classify.service.PersonalClassifyService;
 import com.sadasen.tally.modules.classify.vo.MaxCodeAndSort;
 import com.sadasen.util.CollectionUtil;
 
@@ -23,18 +23,18 @@ import com.sadasen.util.CollectionUtil;
  * @desc
  */
 @Service
-public class ClassifyPersonalServiceImpl extends AbstractBaseService<ClassifyPersonal> 
-		implements ClassifyPersonalService {
+public class PersonalClassifyServiceImpl extends AbstractBaseService<PersonalClassify> 
+		implements PersonalClassifyService {
 	
 	@Autowired
-	private ClassifyPersonalDao classifyPersonalDao;
+	private PersonalClassifyDao classifyPersonalDao;
 	@Autowired
-	private ClassifyPersonalParentDao classifyPersonalParentDao;
+	private PersonalClassifyParentDao classifyPersonalParentDao;
 	
 	@Override
-	public ClassifyPersonal save(ClassifyPersonal classify) {
-		ClassifyPersonal parent = null;
-		ClassifyPersonal lastParent = null;
+	public PersonalClassify save(PersonalClassify classify) {
+		PersonalClassify parent = null;
+		PersonalClassify lastParent = null;
 		if(0!=classify.getParentId()) {
 			parent = classifyPersonalDao.single(classify.getParentId());
 			if(null!=parent) {
@@ -69,10 +69,10 @@ public class ClassifyPersonalServiceImpl extends AbstractBaseService<ClassifyPer
 		classify.setSort(max.getMaxSort()+1);
 		classifyPersonalDao.insertTemplate(classify, true);
 		
-		List<ClassifyPersonalParent> parentList = new ArrayList<>();
-		ClassifyPersonalParent classifyParent = null;
+		List<PersonalClassifyParent> parentList = new ArrayList<>();
+		PersonalClassifyParent classifyParent = null;
 		while(null!=parent) {
-			classifyParent = new ClassifyPersonalParent();
+			classifyParent = new PersonalClassifyParent();
 			classifyParent.setChildId(classify.getId());
 			classifyParent.setParentId(parent.getId());
 			classifyParent.setLevel(parent.getLevel());
@@ -95,7 +95,7 @@ public class ClassifyPersonalServiceImpl extends AbstractBaseService<ClassifyPer
 	}
 	
 	@Override
-	public List<ClassifyPersonal> getListPage(ClassifyParamDto classifyParam) {
+	public List<PersonalClassify> getListPage(ClassifyParamDto classifyParam) {
 		return classifyPersonalDao.selectListByCondition(classifyParam);
 	}
 

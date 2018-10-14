@@ -5,7 +5,7 @@ import java.util.List;
 import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.mapper.BaseMapper;
 
-import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
+import com.sadasen.tally.modules.agroup.entity.PersonalAgroup;
 
 /**
  * @date 2018年10月6日
@@ -13,9 +13,9 @@ import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
  * @addr company
  * @desc
  */
-public interface AgroupPersonalDao extends BaseMapper<AgroupPersonal> {
+public interface PersonalAgroupDao extends BaseMapper<PersonalAgroup> {
 
-	public List<AgroupPersonal> selectListByBill(@Param("billId") long billId);
+	public List<PersonalAgroup> selectListByBill(@Param("billId") long billId);
 	
 	public int selectMaxSortByCondition(@Param("billId") long billId);
 	

@@ -3,7 +3,7 @@ package com.sadasen.tally.modules.agroup.service;
 import java.util.List;
 
 import com.sadasen.tally.base.BaseService;
-import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
+import com.sadasen.tally.modules.agroup.entity.PersonalAgroup;
 
 /**
  * @date 2018年10月6日
@@ -11,9 +11,9 @@ import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
  * @addr company
  * @desc
  */
-public interface AgroupPersonalServie extends BaseService<AgroupPersonal> {
+public interface PersonalAgroupServie extends BaseService<PersonalAgroup> {
 	
-	public List<AgroupPersonal> getByBillId(long billId);
+	public List<PersonalAgroup> getByBillId(long billId);
 	
 	public int getMaxSortByBill(long billId);
 

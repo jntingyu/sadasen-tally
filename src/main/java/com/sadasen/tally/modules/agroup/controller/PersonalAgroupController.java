@@ -14,8 +14,8 @@ import com.sadasen.core.response.JsonResult;
 import com.sadasen.core.response.status.Status;
 import com.sadasen.tally.base.BaseController;
 import com.sadasen.tally.modules.agroup.dto.AgroupDto;
-import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
-import com.sadasen.tally.modules.agroup.service.AgroupPersonalServie;
+import com.sadasen.tally.modules.agroup.entity.PersonalAgroup;
+import com.sadasen.tally.modules.agroup.service.PersonalAgroupServie;
 import com.sadasen.util.DateUtil;
 
 /**
@@ -26,17 +26,17 @@ import com.sadasen.util.DateUtil;
  */
 @RestController
 @RequestMapping("/agroup/personal")
-public class AgroupPersonalController extends BaseController {
+public class PersonalAgroupController extends BaseController {
 	
 	@Autowired
-	private AgroupPersonalServie agroupPersonalServie;
+	private PersonalAgroupServie agroupPersonalServie;
 	
 	@PostMapping
 	public JsonResult add(@RequestBody AgroupDto agroupDto) {
 		// 参数检验
 		
 		// 实体类参数值
-		AgroupPersonal agroupPersonal = new AgroupPersonal();
+		PersonalAgroup agroupPersonal = new PersonalAgroup();
 		agroupPersonal.setBillId(agroupDto.getBillId());
 		agroupPersonal.setName(agroupDto.getName());
 		agroupPersonal.setCreateTime(DateUtil.now());
@@ -52,7 +52,7 @@ public class AgroupPersonalController extends BaseController {
 	
 	@GetMapping("/bill/{billId}")
 	public JsonResult list(@PathVariable("billId") long billId) {
-		List<AgroupPersonal> result = null;
+		List<PersonalAgroup> result = null;
 		try {
 			result = agroupPersonalServie.getByBillId(billId);
 			return JsonResult.instance(result);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.sadasen.tally.base.BaseService;
 import com.sadasen.tally.modules.classify.dto.ClassifyParamDto;
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonal;
+import com.sadasen.tally.modules.classify.entity.PersonalClassify;
 
 /**
  * @date 2018年9月15日
@@ -12,8 +12,8 @@ import com.sadasen.tally.modules.classify.entity.ClassifyPersonal;
  * @addr home
  * @desc
  */
-public interface ClassifyPersonalService extends BaseService<ClassifyPersonal> {
+public interface PersonalClassifyService extends BaseService<PersonalClassify> {
 	
-	public List<ClassifyPersonal> getListPage(ClassifyParamDto classifyParam);
+	public List<PersonalClassify> getListPage(ClassifyParamDto classifyParam);
 
 }

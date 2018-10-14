@@ -5,7 +5,7 @@ import java.util.List;
 import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.mapper.BaseMapper;
 
-import com.sadasen.tally.modules.account.entity.AccountPersonal;
+import com.sadasen.tally.modules.account.entity.PersonalAccount;
 import com.sadasen.tally.modules.account.entity.GroupAccount;
 
 /**
@@ -14,13 +14,13 @@ import com.sadasen.tally.modules.account.entity.GroupAccount;
  * @addr home
  * @desc
  */
-public interface AccountPersonalDao extends BaseMapper<AccountPersonal> {
+public interface PersonalAccountDao extends BaseMapper<PersonalAccount> {
 	
 	public void insertGroupAccount(GroupAccount groupAccount);
 	
-	public List<AccountPersonal> selectListByBill(@Param("billId") long billId);
+	public List<PersonalAccount> selectListByBill(@Param("billId") long billId);
 	
-	public List<AccountPersonal> selectListByGroup(@Param("groupId") long groupId);
+	public List<PersonalAccount> selectListByGroup(@Param("groupId") long groupId);
 	
 	public int selectMaxSortByCondition(@Param("billId") long billId);
 

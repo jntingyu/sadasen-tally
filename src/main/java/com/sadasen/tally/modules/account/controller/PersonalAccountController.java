@@ -14,8 +14,8 @@ import com.sadasen.core.response.JsonResult;
 import com.sadasen.core.response.status.Status;
 import com.sadasen.tally.base.BaseController;
 import com.sadasen.tally.modules.account.dto.AccountDto;
-import com.sadasen.tally.modules.account.entity.AccountPersonal;
-import com.sadasen.tally.modules.account.service.AccountPersonalService;
+import com.sadasen.tally.modules.account.entity.PersonalAccount;
+import com.sadasen.tally.modules.account.service.PersonalAccountService;
 import com.sadasen.util.DateUtil;
 
 /**
@@ -25,18 +25,18 @@ import com.sadasen.util.DateUtil;
  * @desc
  */
 @RestController
-@RequestMapping("/account/personal")
-public class AccountPersonalController extends BaseController {
+@RequestMapping("/personal/account")
+public class PersonalAccountController extends BaseController {
 	
 	@Autowired
-	private AccountPersonalService accountService;
+	private PersonalAccountService accountService;
 	
 	@PostMapping
 	public JsonResult add(@RequestBody AccountDto accountDto) {
 		// 参数校验
 		
 		// 实体类参数值
-		AccountPersonal account = new AccountPersonal();
+		PersonalAccount account = new PersonalAccount();
 		account.setBillId(accountDto.getBillId());
 		account.setName(accountDto.getName());
 		account.setCreateTime(DateUtil.now());
@@ -54,7 +54,7 @@ public class AccountPersonalController extends BaseController {
 	@GetMapping("/bill/{billId}")
 	public JsonResult list(@PathVariable("billId") long billId) {
 		try {
-			List<AccountPersonal> accountList = accountService.getList(billId);
+			List<PersonalAccount> accountList = accountService.getList(billId);
 			return JsonResult.instance(accountList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +65,7 @@ public class AccountPersonalController extends BaseController {
 	@GetMapping("/group/{groupId}")
 	public JsonResult listGroup(@PathVariable("groupId") long groupId) {
 		try {
-			List<AccountPersonal> accountList = accountService.getListByGroup(groupId);
+			List<PersonalAccount> accountList = accountService.getListByGroup(groupId);
 			return JsonResult.instance(accountList);
 		} catch (Exception e) {
 			e.printStackTrace();

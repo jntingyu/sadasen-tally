@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sadasen.tally.base.AbstractBaseService;
-import com.sadasen.tally.modules.agroup.dao.AgroupPersonalDao;
-import com.sadasen.tally.modules.agroup.entity.AgroupPersonal;
-import com.sadasen.tally.modules.agroup.service.AgroupPersonalServie;
+import com.sadasen.tally.modules.agroup.dao.PersonalAgroupDao;
+import com.sadasen.tally.modules.agroup.entity.PersonalAgroup;
+import com.sadasen.tally.modules.agroup.service.PersonalAgroupServie;
 
 /**
  * @date 2018年10月6日
@@ -17,13 +17,13 @@ import com.sadasen.tally.modules.agroup.service.AgroupPersonalServie;
  * @desc
  */
 @Service
-public class AgroupPersonalServiceImpl extends AbstractBaseService<AgroupPersonal> implements AgroupPersonalServie {
+public class PersonalAgroupServiceImpl extends AbstractBaseService<PersonalAgroup> implements PersonalAgroupServie {
 	
 	@Autowired
-	private AgroupPersonalDao agroupPersonalDao;
+	private PersonalAgroupDao agroupPersonalDao;
 	
 	@Override
-	public List<AgroupPersonal> getByBillId(long billId) {
+	public List<PersonalAgroup> getByBillId(long billId) {
 		return agroupPersonalDao.selectListByBill(billId);
 	}
 	

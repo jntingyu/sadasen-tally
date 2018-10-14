@@ -11,8 +11,8 @@ import com.sadasen.tally.common.Consts;
  * @addr company
  * @desc
  */
-@Table(name=Consts.Table.T_ACCOUNT_GROUP_PERSONAL)
-public class AgroupPersonal extends BaseEntity {
+@Table(name=Consts.Table.T_PERSONAL_AGROUP)
+public class PersonalAgroup extends BaseEntity {
 
 	private static final long serialVersionUID = 4520235137476623422L;
 	
@@ -21,7 +21,7 @@ public class AgroupPersonal extends BaseEntity {
 	private String name;
 	private int sort;
 	
-	public AgroupPersonal() {
+	public PersonalAgroup() {
 	}
 
 	public long getId() {

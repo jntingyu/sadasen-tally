@@ -18,8 +18,8 @@ import com.sadasen.tally.modules.bill.entity.Bill;
 import com.sadasen.tally.modules.bill.service.BillService;
 import com.sadasen.tally.modules.classify.dto.ClassifyDto;
 import com.sadasen.tally.modules.classify.dto.ClassifyParamDto;
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonal;
-import com.sadasen.tally.modules.classify.service.ClassifyPersonalService;
+import com.sadasen.tally.modules.classify.entity.PersonalClassify;
+import com.sadasen.tally.modules.classify.service.PersonalClassifyService;
 import com.sadasen.util.DateUtil;
 
 /**
@@ -29,13 +29,13 @@ import com.sadasen.util.DateUtil;
  * @desc
  */
 @RestController
-@RequestMapping("/classify/personal")
-public class ClassifyPersonalController extends BaseController {
+@RequestMapping("/personal/classify")
+public class PersonalClassifyController extends BaseController {
 	
 	@Autowired
 	private BillService billService;
 	@Autowired
-	private ClassifyPersonalService classifyPersonalService;
+	private PersonalClassifyService classifyPersonalService;
 	
 	@PostMapping
 	public JsonResult add(@RequestBody ClassifyDto classifyDto) {
@@ -51,7 +51,7 @@ public class ClassifyPersonalController extends BaseController {
 			return JsonResult.instance(Status.REQUEST_VALID);
 		}
 		// 设置属性
-		ClassifyPersonal classify = new ClassifyPersonal();
+		PersonalClassify classify = new PersonalClassify();
 		classify.setBillId(classifyDto.getBillId());
 		classify.setParentId(classifyDto.getParentId());
 		classify.setName(classifyDto.getName());
@@ -81,7 +81,7 @@ public class ClassifyPersonalController extends BaseController {
 		param.setPage(page);
 		param.setPagesize(pagesize);
 		
-		List<ClassifyPersonal> classifyList = classifyPersonalService.getListPage(param);
+		List<PersonalClassify> classifyList = classifyPersonalService.getListPage(param);
 		
 		return JsonResult.instance(classifyList);
 	}

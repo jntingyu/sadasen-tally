@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS t_bill (
 	create_time timestamp DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS t_classify_personal (
+CREATE TABLE IF NOT EXISTS t_personal_classify (
 	id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '分类ID',
 	parent_id bigint(20) NOT NULL DEFAULT 0 COMMENT '上级分类',
 	bill_id bigint(20) NOT NULL DEFAULT 0 COMMENT '记账单ID',
@@ -42,14 +42,14 @@ CREATE TABLE IF NOT EXISTS t_classify_personal (
 	create_time timestamp DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS t_classify_personal_parent (
+CREATE TABLE IF NOT EXISTS t_personal_classify_parent (
 	child_id bigint(20) NOT NULL DEFAULT 0,
 	parent_id bigint(20) NOT NULL DEFAULT 0,
 	level tinyint(4) NOT NULL DEFAULT 0,
 	PRIMARY KEY(child_id, parent_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS t_account_personal (
+CREATE TABLE IF NOT EXISTS t_personal_account (
 	id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '帐户ID',
 	bill_id bigint(20) NOT NULL DEFAULT 0,
 	name varchar(30) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS t_account_personal (
 	create_time timestamp DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS t_account_group_personal (
+CREATE TABLE IF NOT EXISTS t_personal_agroup (
 	id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '帐户组ID',
 	bill_id bigint(20) NOT NULL DEFAULT 0,
 	name varchar(30) NOT NULL,
@@ -65,8 +65,21 @@ CREATE TABLE IF NOT EXISTS t_account_group_personal (
 	create_time timestamp DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS t_group_account_personal (
+CREATE TABLE IF NOT EXISTS t_personal_group_account (
 	group_id bigint(20) NOT NULL DEFAULT 0,
 	account_id bigint(20) NOT NULL DEFAULT 0,
 	PRIMARY KEY(group_id, account_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS t_personal_record (
+	id bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '帐户组ID',
+	bill_id bigint(20) NOT NULL DEFAULT 0 COMMENT '记账单ID',
+	record_date date DEFAULT NULL COMMENT '日期',
+	classify_id bigint(20) NOT NULL DEFAULT 0 COMMENT '分类ID',
+	amount int(11) NOT NULL DEFAULT 0 COMMENT '金额',
+	group_id bigint(20) NOT NULL DEFAULT 0 COMMENT '帐户组ID',
+	account_id bigint(20) NOT NULL DEFAULT 0 COMMENT '帐户ID',
+	remark varchar(200) DEFAULT NULL COMMENT '备注',
+	update_time timestamp DEFAULT current_timestamp COMMENT '创建时间',
+	create_time timestamp DEFAULT current_timestamp COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

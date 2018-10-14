@@ -10,8 +10,8 @@ import com.sadasen.tally.common.Consts;
  * @addr home
  * @desc
  */
-@Table(name=Consts.Table.T_ACCOUNT_PERSONAL)
-public class AccountPersonal extends Account {
+@Table(name=Consts.Table.T_PERSONAL_ACCOUNT)
+public class PersonalAccount extends Account {
 
 	private static final long serialVersionUID = 4630536556590194430L;
 

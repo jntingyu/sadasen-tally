@@ -10,8 +10,8 @@ import com.sadasen.tally.common.Consts;
  * @addr home
  * @desc
  */
-@Table(name=Consts.Table.T_CLASSIFY_PERSONAL)
-public class ClassifyPersonal extends Classify {
+@Table(name=Consts.Table.T_PERSONAL_CLASSIFY)
+public class PersonalClassify extends Classify {
 
 	private static final long serialVersionUID = -1088521659830690046L;
 

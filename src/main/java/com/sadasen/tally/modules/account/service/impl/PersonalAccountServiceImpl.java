@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sadasen.tally.base.AbstractBaseService;
-import com.sadasen.tally.modules.account.dao.AccountPersonalDao;
+import com.sadasen.tally.modules.account.dao.PersonalAccountDao;
 import com.sadasen.tally.modules.account.dto.AccountDto;
-import com.sadasen.tally.modules.account.entity.AccountPersonal;
+import com.sadasen.tally.modules.account.entity.PersonalAccount;
 import com.sadasen.tally.modules.account.entity.GroupAccount;
-import com.sadasen.tally.modules.account.service.AccountPersonalService;
+import com.sadasen.tally.modules.account.service.PersonalAccountService;
 
 /**
  * @date 2018年9月17日
@@ -19,13 +19,13 @@ import com.sadasen.tally.modules.account.service.AccountPersonalService;
  * @desc
  */
 @Service
-public class AccountPersonalServiceImpl extends AbstractBaseService<AccountPersonal> implements AccountPersonalService {
+public class PersonalAccountServiceImpl extends AbstractBaseService<PersonalAccount> implements PersonalAccountService {
 
 	@Autowired
-	private AccountPersonalDao accountDao;
+	private PersonalAccountDao accountDao;
 	
 	@Override
-	public AccountPersonal save(AccountPersonal account, AccountDto accountDto) {
+	public PersonalAccount save(PersonalAccount account, AccountDto accountDto) {
 		account = super.save(account);
 		
 		if(0!=accountDto.getGroupId()) {
@@ -37,12 +37,12 @@ public class AccountPersonalServiceImpl extends AbstractBaseService<AccountPerso
 	}
 	
 	@Override
-	public List<AccountPersonal> getList(long billId) {
+	public List<PersonalAccount> getList(long billId) {
 		return accountDao.selectListByBill(billId);
 	}
 	
 	@Override
-	public List<AccountPersonal> getListByGroup(long groupId) {
+	public List<PersonalAccount> getListByGroup(long groupId) {
 		return accountDao.selectListByGroup(groupId);
 	}
 	

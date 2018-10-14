@@ -6,7 +6,7 @@ import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.mapper.BaseMapper;
 
 import com.sadasen.tally.modules.classify.dto.ClassifyParamDto;
-import com.sadasen.tally.modules.classify.entity.ClassifyPersonal;
+import com.sadasen.tally.modules.classify.entity.PersonalClassify;
 import com.sadasen.tally.modules.classify.vo.MaxCodeAndSort;
 
 /**
@@ -15,12 +15,12 @@ import com.sadasen.tally.modules.classify.vo.MaxCodeAndSort;
  * @addr home
  * @desc
  */
-public interface ClassifyPersonalDao extends BaseMapper<ClassifyPersonal> {
+public interface PersonalClassifyDao extends BaseMapper<PersonalClassify> {
 	
 	public int updateHasChild(@Param("hasChild") int hasChild, @Param("id") long id);
 	
-	public List<ClassifyPersonal> selectListByCondition(ClassifyParamDto classifyParam);
+	public List<PersonalClassify> selectListByCondition(ClassifyParamDto classifyParam);
 	
-	public MaxCodeAndSort selectMaxCodeAndSort(ClassifyPersonal classifyPersonal);
+	public MaxCodeAndSort selectMaxCodeAndSort(PersonalClassify classifyPersonal);
 	
 }

@@ -22,6 +22,7 @@ public class Record extends BaseEntity {
 	private long groupId;
 	private long accountId;
 	private String remark;
+	private Date updateTime;
 	
 	public Record() {
 	}
@@ -88,6 +89,14 @@ public class Record extends BaseEntity {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
 }

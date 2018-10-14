@@ -14,13 +14,13 @@ public class Consts {
 		// 记账单表
 		public static final String T_BILL = "t_bill";
 		// 个人账单分类
-		public static final String T_CLASSIFY_PERSONAL = "t_classify_personal";
+		public static final String T_PERSONAL_CLASSIFY = "t_personal_classify";
 		// 个人账单分类层级
-		public static final String T_CLASSIFY_PERSONAL_PARENT = "t_classify_personal_parent";
+		public static final String T_PERSONAL_CLASSIFY_PARENT = "t_personal_classify_parent";
 		// 个人账单帐户
-		public static final String T_ACCOUNT_PERSONAL = "t_account_personal";
+		public static final String T_PERSONAL_ACCOUNT = "t_personal_account";
 		// 个人账单帐户组
-		public static final String T_ACCOUNT_GROUP_PERSONAL = "t_account_group_personal";
+		public static final String T_PERSONAL_AGROUP = "t_personal_agroup";
 		
 	}
 	
